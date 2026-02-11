@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Image from "next/image";
 import { getContent, type Locale } from "./content";
 
 /* ——— Google Maps: Replace src with your embed URL ——— */
@@ -80,9 +81,17 @@ export default function HomePage() {
 
         {/* ——— 1) HERO ——— */}
         <header className="relative min-h-[100dvh] flex flex-col justify-end pb-16 md:pb-24 px-6 md:px-12">
-          {/* Hero background: add your image to public/hero.jpg and use:
-              <Image src="/hero.jpg" alt="" fill className="object-cover" priority /> inside a div with absolute inset-0 */}
-          <div className="absolute inset-0 bg-espresso" aria-hidden />
+          <div className="absolute inset-0" aria-hidden>
+            <Image
+              src="/hero.jpg"
+              alt=""
+              fill
+              className="object-cover"
+              priority
+              sizes="100vw"
+            />
+          </div>
+          <div className="absolute inset-0 bg-espresso/40" aria-hidden />
           <div
             className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/80 to-espresso/40"
             aria-hidden
