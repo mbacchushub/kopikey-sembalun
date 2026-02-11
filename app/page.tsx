@@ -4,11 +4,13 @@ import { useState, useCallback } from "react";
 import Image from "next/image";
 import { getContent, type Locale } from "./content";
 
-/* ——— Google Maps: Replace src with your embed URL ——— */
-const MAPS_EMBED_SRC = ""; // e.g. "https://www.google.com/maps/embed?pb=..."
+/* ——— Add your Google Maps profile below ——— */
+/* Embed URL: Google Maps → your place → Share → Embed a map → copy iframe src */
+const MAPS_EMBED_SRC =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.401936279193!2d116.51316967624712!3d-8.362062284280615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcc2f36929b8153%3A0x6c48507d6606a235!2sKopikey%20Sembalun!5e0!3m2!1sen!2sid!4v1770783315351!5m2!1sen!2sid";
 
-/* ——— Google Business / Reviews: Add your widget script or iframe here ——— */
-const GOOGLE_PLACE_ID = ""; // Optional: for review widget
+/* Place ID for "Leave a review" link (from Google Business Profile or Place ID finder) */
+const GOOGLE_PLACE_ID = "B7SJN1QTvPIOxLPFW";
 
 export default function HomePage() {
   const [locale, setLocale] = useState<Locale>("en");
@@ -19,32 +21,8 @@ export default function HomePage() {
 
   return (
     <>
-      {/* JSON-LD LocalBusiness schema – uncomment and fill for SEO */}
-      {/* <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            name: "Kopikey Sembalun",
-            description: "Authentic Sembalun Arabica coffee from Mount Rinjani, East Lombok.",
-            url: "https://your-domain.com",
-            telephone: "+62...",
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "Sembalun",
-              addressRegion: "East Lombok",
-              addressCountry: "ID",
-            },
-            geo: { "@type": "GeoCoordinates", latitude: -8.38, longitude: 116.54 },
-            openingHours: "Mo-Su",
-            foundingDate: "2012",
-          }),
-        }}
-      /> */}
-
       <div className="min-h-screen flex flex-col">
-        {/* ——— Language toggle (fixed, accessible) ——— */}
+        {/* ——— Language toggle ——— */}
         <nav
           className="fixed top-0 left-0 right-0 z-50 flex justify-end p-4 md:p-6"
           aria-label="Language"
@@ -91,20 +69,20 @@ export default function HomePage() {
               sizes="100vw"
             />
           </div>
-          <div className="absolute inset-0 bg-espresso/40" aria-hidden />
+
           <div
-            className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/80 to-espresso/40"
+            className="absolute inset-x-0 bottom-0 h-1/2 max-h-[60vh] bg-gradient-to-t from-espresso/85 via-espresso/30 to-transparent pointer-events-none z-[1]"
             aria-hidden
           />
 
           <div className="relative z-10 max-w-3xl animate-fade-in-up">
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-cream tracking-tight">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-cream tracking-tight [text-shadow:0_0_1px_rgba(0,0,0,0.8),0_1px_4px_rgba(0,0,0,0.6),0_2px_12px_rgba(0,0,0,0.5)]">
               {t.hero.title}
             </h1>
-            <p className="font-serif text-xl md:text-2xl text-beige mt-2 md:mt-3">
+            <p className="font-serif text-xl md:text-2xl text-beige mt-2 md:mt-3 [text-shadow:0_0_1px_rgba(0,0,0,0.75),0_1px_3px_rgba(0,0,0,0.55),0_2px_8px_rgba(0,0,0,0.45)]">
               {t.hero.tagline}
             </p>
-            <p className="text-cream/90 mt-4 max-w-xl text-lg">
+            <p className="text-cream/90 mt-4 max-w-xl text-lg [text-shadow:0_0_1px_rgba(0,0,0,0.7),0_1px_3px_rgba(0,0,0,0.5)]">
               {t.hero.subheadline}
             </p>
             <div className="flex flex-wrap gap-4 mt-8">
@@ -185,7 +163,6 @@ export default function HomePage() {
             className="py-20 md:py-28 px-6 md:px-12 bg-cream relative overflow-hidden"
             aria-labelledby="experience-heading"
           >
-            {/* Optional: background image of Rinjani / calm scene — add next/image here */}
             <div className="absolute inset-0 bg-forest/5" aria-hidden />
             <div className="relative max-w-3xl mx-auto text-center">
               <h2 id="experience-heading" className="font-serif text-3xl md:text-4xl text-espresso">
@@ -227,51 +204,26 @@ export default function HomePage() {
                   />
                 ) : (
                   <p className="text-espresso/60 text-sm p-6 text-center">
-                    {/* Insert Google Maps iframe: get embed URL from Google Maps → Share → Embed */}
                     Placeholder: Add your Google Maps embed iframe here.
                   </p>
                 )}
               </div>
-            </div>
-          </section>
-
-          {/* ——— 6) GOOGLE BUSINESS PROFILE ——— */}
-          <section
-            id="reviews"
-            className="py-16 md:py-20 px-6 md:px-12 bg-cream"
-            aria-labelledby="google-heading"
-          >
-            <div className="max-w-2xl mx-auto text-center">
-              <h2 id="google-heading" className="font-serif text-2xl md:text-3xl text-espresso">
-                {t.google.title}
-              </h2>
-              <p className="text-forest font-medium mt-2">{t.google.category}</p>
-              <p className="text-espresso/80 mt-1">{t.google.location}</p>
-              {/* Google Reviews widget: embed script or iframe from Google Business Profile */}
-              {GOOGLE_PLACE_ID ? (
-                <div className="mt-6 min-h-[200px] rounded-xl bg-beige/50 flex items-center justify-center">
-                  {/* Add Google review widget embed here */}
-                  <span className="text-espresso/60 text-sm">Reviews widget placeholder</span>
-                </div>
-              ) : (
-                <div className="mt-6 min-h-[120px] rounded-xl bg-beige/50 flex items-center justify-center">
-                  <p className="text-espresso/60 text-sm px-4">
-                    Add your Google Business Place ID and reviews widget embed.
-                  </p>
+              {GOOGLE_PLACE_ID && (
+                <div className="mt-6 text-center">
+                  <a
+                    href={`https://search.google.com/local/writereview?placeid=${GOOGLE_PLACE_ID}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block rounded-full bg-espresso text-cream px-6 py-3 font-medium hover:bg-espresso-light transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
+                  >
+                    {t.google.ctaReview}
+                  </a>
                 </div>
               )}
-              <a
-                href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-6 rounded-full bg-espresso text-cream px-6 py-3 font-medium hover:bg-espresso-light transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
-              >
-                {t.google.ctaReview}
-              </a>
             </div>
           </section>
 
-          {/* ——— 7) TESTIMONIAL ——— */}
+          {/* ——— 6) TESTIMONIAL ——— */}
           <section
             className="py-20 md:py-24 px-6 md:px-12 bg-beige/40"
             aria-label="Testimonial"
@@ -286,7 +238,7 @@ export default function HomePage() {
             </blockquote>
           </section>
 
-          {/* ——— 8) VISIT / CTA ——— */}
+          {/* ——— 7) VISIT / CTA ——— */}
           <section
             id="visit"
             className="py-20 md:py-28 px-6 md:px-12 bg-forest text-cream"
@@ -311,7 +263,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* ——— 9) FOOTER ——— */}
+          {/* ——— 8) FOOTER ——— */}
           <footer className="py-12 md:py-16 px-6 md:px-12 bg-espresso text-beige">
             <div className="max-w-4xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
               <div>

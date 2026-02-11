@@ -29,15 +29,10 @@ Open [http://localhost:3000](http://localhost:3000).
 2. **Google Maps**  
    In `app/page.tsx`, set `MAPS_EMBED_SRC` to your Google Maps embed URL (Google Maps → Share → Embed a map).
 
-3. **Google Business / Reviews**  
-   - Set `GOOGLE_PLACE_ID` if you use a reviews widget.
-   - Update the “Leave a Review” link with your real Place ID:  
-     `https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID`
-
-4. **JSON-LD (SEO)**  
+3. **JSON-LD (SEO)**  
    In `app/page.tsx`, uncomment the JSON-LD script block and fill in `url`, `telephone`, and exact `geo` coordinates.
 
-5. **Metadata**  
+4. **Metadata**  
    In `app/layout.tsx`, adjust `metadata` (e.g. `openGraph.url`, `twitter`) when you have a production URL.
 
 ## Build
