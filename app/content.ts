@@ -18,7 +18,7 @@ const en = {
     title: "Our Story",
     subtitle: "Coffee as culture, not just product.",
     founded:
-      "Founded in 2012 by Jayadi Muhammad, Kopikey Sembalun was born from a simple belief: the highlands of Sembalun grow some of Indonesia's finest Arabica.",
+      "Founded in 2012 by Jayadi M, Kopikey Sembalun was born from a simple belief: the highlands of Sembalun grow some of Indonesia's finest Arabica.",
     story:
       "Every batch is hand-selected and hand-blended. We work with local farmers at the foot of Mount Rinjani, where altitude and volcanic soil create beans with clarity and depth. This is authentic Sembalun coffee—no shortcuts, no compromise.",
   },
@@ -92,7 +92,7 @@ const id = {
     title: "Cerita Kami",
     subtitle: "Kopi sebagai budaya, bukan sekadar produk.",
     founded:
-      "Didirikan tahun 2012 oleh Jayadi Muhammad, Kopikey Sembalun lahir dari keyakinan sederhana: dataran tinggi Sembalun menumbuhkan salah satu Arabika terbaik Indonesia.",
+      "Didirikan tahun 2012 oleh Jayadi M, Kopikey Sembalun lahir dari keyakinan sederhana: dataran tinggi Sembalun menumbuhkan salah satu Arabika terbaik Indonesia.",
     story:
       "Setiap batch dipilih dan di-blend dengan tangan. Kami bekerja dengan petani lokal di kaki Gunung Rinjani, di mana ketinggian dan tanah vulkanik menciptakan biji kopi yang jernih dan berkarakter. Inilah kopi Sembalun asli—tanpa jalan pintas.",
   },
